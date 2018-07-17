@@ -65,34 +65,32 @@ def get_seqs(fn):
     return (seq, tm)
 
 
-def read_sequence(file):
+def read_sequence(f):
+    seq = ""
     l = f.readline().rstrip()
     while (len(l) > 0):
         if re.search('^>', l):
             break
         seq += l
         l = f.readline().rstrip()
+    return  f,seq, l
 
-    return seq
 def get_sequences(fn):
     returnDict = {}
-    seq = []
-    tm = []
+
     with open(fn) as f:
         l = f.readline()
         if re.search('^>', l):
-            name = re.match('\w+$', l)
 
-            l = f.readline().rstrip()
-            tm += l
-            l = f.readline().rstrip()
-            while (len(l) > 0):
-                tm += l
-                l = f.readline().rstrip()
+            while len(l) >0:
+                name = re.search('\|([A-Za-z_0-9]+)\s*$', l).group(1)
+                f, seq , _= read_sequence(f)
+                f, tm, l = read_sequence(f)
+                returnDict[name] = (seq, tm)
         else:
             raise ValueError("Wrong file format for the sequences\n")
 
-    return (seq, tm)
+    return returnDict
 
 
 
@@ -134,29 +132,32 @@ def fisher_yates(seq):
 
 
 def prepare_input(fasta_file):
-    (seq, tm) = get_seqs(fasta_file)
+    sequenceDict= get_sequences(fasta_file)
+    print sequenceDict
 
 
 
-
-if __name__ == "__main__":
-    if (len(sys.argv) != 3):
-        raise ValueError("""
-	I need 2 args:
-	- the sequence file (containing both the sequence and the transmembrane regions)
-	- the output directory name""")
-    in_fn = sys.argv[1]
-    out_dir = sys.argv[2]
-    if not exists(out_dir):
-        mkdir(out_dir)
-    if not exists("{0}_scrambled".format(out_dir)):
-        mkdir("{0}_scrambled".format(out_dir))
-    (seq, tm) = get_seqs(in_fn)
-    write_regs(seq, tm, "{0}/{0}".format(out_dir))
-    write_regs(seq, tm, "{0}_scrambled/{0}_scrambled".format(out_dir))
-    scramble = fisher_yates(seq)
-    convert_string(seq, "{0}/{0}.res".format(out_dir))
-    convert_string(scramble, "{0}_scrambled/{0}_scrambled.res".format(out_dir))
-    with open("{0}_scrambled/{0}_scrambled.seq".format(out_dir), "w") as f:
-        f.write(scramble)
-        f.write("\n")
+if __name__=="__main__":
+    prepare_input("fasta_test.txt")
+#
+# if __name__ == "__main__":
+#     if (len(sys.argv) != 3):
+#         raise ValueError("""
+# 	I need 2 args:
+# 	- the sequence file (containing both the sequence and the transmembrane regions)
+# 	- the output directory name""")
+#     in_fn = sys.argv[1]
+#     out_dir = sys.argv[2]
+#     if not exists(out_dir):
+#         mkdir(out_dir)
+#     if not exists("{0}_scrambled".format(out_dir)):
+#         mkdir("{0}_scrambled".format(out_dir))
+#     (seq, tm) = get_seqs(in_fn)
+#     write_regs(seq, tm, "{0}/{0}".format(out_dir))
+#     write_regs(seq, tm, "{0}_scrambled/{0}_scrambled".format(out_dir))
+#     scramble = fisher_yates(seq)
+#     convert_string(seq, "{0}/{0}.res".format(out_dir))
+#     convert_string(scramble, "{0}_scrambled/{0}_scrambled.res".format(out_dir))
+#     with open("{0}_scrambled/{0}_scrambled.seq".format(out_dir), "w") as f:
+#         f.write(scramble)
+#         f.write("\n")
