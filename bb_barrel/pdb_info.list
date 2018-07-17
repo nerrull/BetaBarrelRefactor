@@ -1,0 +1,65 @@
+## pdb	chain	#subunit	#barrel	#tmstrand	istoxin	organism			expressedin		func	note
+1a0s	P		3			3		18			0		S.Typhimurium		?				
+1bxw	A		1			1		8			0		E.Coli				?				
+1e54	A		3			3		16			0		C.acidovorans		?				
+1ek9	A		3			1		4			0		E.coli				?				
+1fep	A		1			1		22			0		E.coli				?				
+1i78	A		1			1		10			0		E.coli				?				
+1k24	A		1			1		10			0		N.meningitidis		?				
+1kmo	A		1			1		22			0		E.coli				?				
+1nqe	A		1			1		22			0		E.coli				?				
+1p4t	A		1			1		8			0		N.meningitidis		?				
+1prn	A		3			3		16			0		R.blastica			E. Coli			
+1qd6	C		1			1		12			0		E.Coli				?				
+1qj8	A		1			1		8			0		E.Coli				?				
+1t16	A		1			1		14			0		E.Coli				?				
+1thq	A		1			1		8			0		E.Coli				?				
+1tly	A		1			1		12			0		E.Coli				?				
+1uyn	X		1			1		12			0		N.meningitidis		E. Coli			
+1xkw	A		1			1		22			0		P.aeruginosa		?				
+1yc9	A		3			1		4			0		V.cholerae			?				
+2erv	A		1			1		8			0		P.aeruginosa		?				
+2f1c	A		1			1		14			0		E.Coli				?				
+2f1t	A		1			1		8			0		E.Coli				?				
+2fcp	A		1			1		22			0		E.Coli				?				
+2gr8	A		3			1		4			0		H.influenzae		E. coli			
+2lhf	A		1			1		8			0		P.aeruginosa		E. coli			
+2lme	A		3			1		4			0		Y.enterocolitica	E. coli			
+2mlh	A		1			1		8			0		N.gonorrhoeaei		?				
+2mpr	A		3			3		18			0		S.typhimurium						
+2o4v	A		3			3		16			0		P.aeruginosa						
+2omf	A		3			3		16			0		E.Coli				?				
+2por	A		3			3		16			0		R.capsulatus						
+2qdz	A		1			1		16			0		B.pertussis			E.coli						
+2vqi	A		1			1		24			0		E.Coli				?				
+2wjr	A		1			1		12			0		E.Coli				?				
+2ynk	A		1			1		18			0		E.Coli				?				
+3aeh	A		1			1		12			0		E.Coli				?				
+3bs0	A		1			1		14			0		P.putida			?				
+3csl	A		1			1		22			0		S.marcescens		E.coli				
+3dwo	X		1			1		14			0		P.aeruginosa		E.coli				
+3dzm	A		1			1		8			0		T.thermophilus		?				
+3fid	A		1			1		12			0		S.typhimurium		E.coli				
+3kvn	A		1			1		12			0		P.aeruginosa		E.coli				
+3pik	A		3			1		4			0		E.Coli				?				
+3rbh	A		1			1		18			0		P.aeruginosa		E.coli				
+3rfz	B		1			1		24			0		E.Coli				?				
+3syb	A		1			1		18			0		P.aeruginosa		E.coli				
+3szv	A		1			1		18			0		P.aeruginosa		E.coli				
+3v8x	A		1			1		22			0		N.meningitidis		E.coli				
+3vzt	A		3			3		16			0		N.meningitidis		E.coli				
+4c00	A		1			1		16			0		E.Coli				?								
+4e1s	A		1			1		12			0		E.Coli				?								
+4gey	A		1			1		16			0		P.putida			E.coli				
+4pr7	A		1			1		12			0		D.dadantii			E.coli				
+4q35	A		1			1		26			0		S.flexneri			E.coli				
+4k3c	A		1			1		16			0		H.ducreyi			E.coli				
+7ahl	A		7			1		2			1		S.aureus			?				Toxin	SYMMETRIC.ENERGY
+3b07	A		8			1		2			1		S.aureus			E.coli			Toxin	SYMMETRIC.ENERGY
+3o44	A		7			1		2			1		V.cholerae			E.coli			Toxin	SYMMETRIC.ENERGY
+3emn	X		1			1		19			0		M.musculus			E.coli			VDAC	VDAC
+4c4v	B		1			1		16			0		E.coli				?				Bam		BamA.redundant
+4n75	A		1			1		16			0		E.coli				?				Bam		BamA.redundant
+4k3b	A		1			1		16			0		N.gonorrhoeae		?				Bam		BamA.redundant
+#2fgr	A		3			3		16			0		D.acidovorans		?				?		redundant.1e54
+#1uun	A		8			1		2			0		M.smegmatis			?				?		GRAM.POS

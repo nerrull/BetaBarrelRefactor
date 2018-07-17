@@ -1,0 +1,2 @@
+from get_bmp51_pretest import get_pretest_dict
+from get_testfile import prepare_test_dict

@@ -1,0 +1,1 @@
+from get_reg_sc_scores import get_scores
