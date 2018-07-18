@@ -4,7 +4,7 @@ This is a refactor of the  3D Beta-barrel Membrane Protein Predictor code by Wil
 The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
 
 ### Full Citation
-::
+```
     @article {Tian201716817,
         author = {Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad},
         title = {High-resolution structure prediction of β-barrel membrane proteins},
@@ -16,7 +16,7 @@ The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
         eprint = {http://www.pnas.org/content/early/2018/01/25/1716817115.full.pdf},
         journal = {Proceedings of the National Academy of Sciences}
     }
-
+```
 
 ## Requirements
 Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). To download scwrl, you must apply for a license on their website. 
@@ -28,10 +28,10 @@ To install required python packages: `pip install -r requirements.txt`
 ## Compiling
 Part of the application is written in C and needs to be compiled.
 
-`
-cd bb_register/pred_combine
+```
+cd bb_register/pred_combine/
 make
-`
+```
 
 If you're getting an error that says something like "Can't find file coonstruction_inputs/resuls/regs/*.regs" you probably forgot to do this step 
 
