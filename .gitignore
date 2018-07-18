@@ -107,8 +107,12 @@ venv.bak/
 
 scwrl/
 /bb_register/tmp_files/
-/bb_barrel/output/
-/bb_barrel/construction_inputs/results/
+/bb_barrel/output/bb/*
+/bb_barrel/output/ca/*
+/bb_barrel/output/reindexmap/*
+/bb_barrel/output/sc/*
+/bb_barrel/output/tmppdbs/*
+/bb_barrel/construction_inputs/results/*
 
 *.pdb
 *.res
@@ -122,3 +126,4 @@ inputs/1a0s/
 *~
 .idea/
 *.tar.gz
+!/bb_barrel/construction_inputs/results/

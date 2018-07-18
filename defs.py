@@ -12,6 +12,8 @@ REGISTER_DIR  = join(BASE_DIR, "bb_register")
 ODDS_DIR = join(join(REGISTER_DIR, "pred_combine"), "odds")
 HAMMAD_DIR = join(ODDS_DIR, "hammad25")
 TMP_DIR =  join(REGISTER_DIR, "tmp_files")
+
+
 EXEC_FILE  = join(REGISTER_DIR, *["pred_combine","exec", "new_pred_reg_bestscore_ecparam110030080.out"])
 
 # Paths for barrel construction
