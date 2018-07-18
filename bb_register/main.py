@@ -11,7 +11,8 @@ from defs import TMP_DIR,EXEC_FILE, BASE_DIR
 
 
 def cleartmp():
-    rmtree(TMP_DIR)
+    if exists(TMP_DIR):
+        rmtree(TMP_DIR)
     mkdir(TMP_DIR)
 
 
