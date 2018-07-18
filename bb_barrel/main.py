@@ -7,7 +7,7 @@ from construct_ca_pdb import construct_ca
 from construct_bb_pdb import construct_bb
 from construct_sc_pdb import construct_sc
 from correct_index_and_trim import correct_and_trim
-from defs import CONSTRUCTION_DIR, BARREL_OUTPUT_DIR, OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR
+from defs import CONSTRUCTION_DIR, BARREL_OUTPUT_DIR, OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR, RESULTS_DIR
 
 def clean():
     results_dir = join(CONSTRUCTION_DIR, 'results')
@@ -24,7 +24,7 @@ def copy_outputs(pdbs, level):
         copy(pdb_path, out_path)
 
 def makedirs():
-    dirs = [CONSTRUCTION_DIR, OUTPUT_DIR, BARREL_OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR]
+    dirs = [CONSTRUCTION_DIR,RESULTS_DIR, OUTPUT_DIR, BARREL_OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR]
     for dir in dirs:
         if not exists(dir):
             mkdir(dir)

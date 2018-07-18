@@ -20,6 +20,8 @@ EXEC_FILE  = join(REGISTER_DIR, *["pred_combine","exec", "new_pred_reg_bestscore
 BARREL_DIR = join(BASE_DIR, "bb_barrel")
 BARREL_OUTPUT_DIR = join(BARREL_DIR, "output")
 CONSTRUCTION_DIR = join(BARREL_DIR, "construction_inputs")
+RESULTS_DIR = join(CONSTRUCTION_DIR, "results")
+
 
 CA_DIR = join(BARREL_OUTPUT_DIR, "ca")
 BB_DIR = join(BARREL_OUTPUT_DIR, "bb")
