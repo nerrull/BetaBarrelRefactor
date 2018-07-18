@@ -116,7 +116,9 @@ scwrl/
 *.strands
 *.regs
 *.tmregs
+inputs/*
 inputs/1a0s/
 
 *~
 .idea/
+*.tar.gz

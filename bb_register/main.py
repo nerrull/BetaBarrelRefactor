@@ -46,9 +46,9 @@ def run_register_prediction(pdbs, level):
     print 'Optimizing local register for better global shear...'
     outfile = "shear_adjustments"
     get_shear_adjustments(test_file_path, TMP_DIR, outfile)
-    # Do this so we can run our code from the console
 
 
+# Do this so we can run our code from the console
 def LoadSearchPaths():
     for i, j, y in walk(join(getcwd(), "..")):
         if (str(i).find('__pycache__') == -1 and str(i).find('.vscode') == -1):

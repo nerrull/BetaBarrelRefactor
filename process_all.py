@@ -2,7 +2,8 @@ import sys
 import re
 import random
 from os import mkdir
-from os.path import exists
+from os.path import exists, join
+from defs import INPUT_DIR, OUTPUT_DIR
 
 aad = dict()
 aad["A"] = 0
@@ -133,31 +134,31 @@ def fisher_yates(seq):
 
 def prepare_input(fasta_file):
     sequenceDict= get_sequences(fasta_file)
-    print sequenceDict
 
+    for sequence_name, (seq, tm) in sequenceDict.iteritems():
+        out_dir = join(INPUT_DIR, sequence_name)
+        if not exists(out_dir):
+            mkdir(out_dir)
+        write_regs(seq, tm, "{0}/{1}".format(out_dir, sequence_name))
+        convert_string(seq, "{0}/{1}.res".format(out_dir, sequence_name))
+
+        #Generate scrambled control sequence
+        out_dir = join(INPUT_DIR, sequence_name+"_scrambled")
+        if not exists(out_dir):
+            mkdir(out_dir)
+        write_regs(seq, tm, "{0}/{1}_scrambled".format(out_dir, sequence_name))
+        scramble = fisher_yates(seq)
+        convert_string(scramble, "{0}/{1}_scrambled.res".format(out_dir, sequence_name))
+
+        with open("{0}/{1}_scrambled.seq".format(out_dir, sequence_name), "w") as f:
+            f.write(scramble)
+            f.write("\n")
+
+    scrambled_pdbs = [pdb +"_scrambled" for pdb in sequenceDict.keys()]
+    return sequenceDict.keys() + scrambled_pdbs
 
 
 if __name__=="__main__":
     prepare_input("fasta_test.txt")
-#
-# if __name__ == "__main__":
-#     if (len(sys.argv) != 3):
-#         raise ValueError("""
-# 	I need 2 args:
-# 	- the sequence file (containing both the sequence and the transmembrane regions)
-# 	- the output directory name""")
-#     in_fn = sys.argv[1]
-#     out_dir = sys.argv[2]
-#     if not exists(out_dir):
-#         mkdir(out_dir)
-#     if not exists("{0}_scrambled".format(out_dir)):
-#         mkdir("{0}_scrambled".format(out_dir))
-#     (seq, tm) = get_seqs(in_fn)
-#     write_regs(seq, tm, "{0}/{0}".format(out_dir))
-#     write_regs(seq, tm, "{0}_scrambled/{0}_scrambled".format(out_dir))
-#     scramble = fisher_yates(seq)
-#     convert_string(seq, "{0}/{0}.res".format(out_dir))
-#     convert_string(scramble, "{0}_scrambled/{0}_scrambled.res".format(out_dir))
-#     with open("{0}_scrambled/{0}_scrambled.seq".format(out_dir), "w") as f:
-#         f.write(scramble)
-#         f.write("\n")
+
+

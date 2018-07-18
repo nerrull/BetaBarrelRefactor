@@ -27,3 +27,19 @@ def loadSearchPaths():
     for i, j, y in walk(getcwd()):
         if (str(i).find('__pycache__') == -1 and str(i).find('.vscode') == -1):
             sys.path.append(i)
+
+
+def autodetectLevel(pdb):
+    input_path = join(INPUT_DIR, pdb)
+    strands_file = join(input_path, "{}.strands".format(pdb))
+    with open(strands_file) as f:
+        for i, l in enumerate(f):
+            pass
+    n_strands = i+1
+
+    if n_strands <16:
+        return [1,2]
+    elif n_strands <20:
+        return [3,4]
+    else: return [4]
+

@@ -9,7 +9,6 @@ from correct_index_and_trim import correct_and_trim
 from defs import CONSTRUCTION_DIR, OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR
 
 def clean():
-
     results_dir = join(CONSTRUCTION_DIR, 'results')
     rmtree(results_dir)
     os.mkdir(results_dir)

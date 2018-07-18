@@ -34,6 +34,7 @@ def get_ecs(pdb, peris, ecfn, weights, theta, log):
                 reg = reg + offset1 + offset2
             else:
                 reg = reg - offset1 - offset2
+
             ## get distant contact list
             dist_cont_list = []
             dist_cont_list.append(regpy.get_dist_contacts(strand1, strand2, 0))
