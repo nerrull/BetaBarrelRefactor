@@ -2,7 +2,7 @@ import sys
 from os import walk, getcwd, mkdir
 from os.path import join, exists
 from shutil import rmtree
-
+import time
 from pretest import get_pretest_dict, prepare_test_dict
 from registration import get_scores
 from pred_combine import find_best_combination
@@ -34,6 +34,7 @@ def run_register_prediction(pdbs, level):
     log = 0
     theta =0
 
+    time.sleep(0.1)
     score_output_file= join(TMP_DIR, "scores.ecs")
     scores = get_scores(test_dict, weights, log, theta, score_output_file, ec_raw_dir)
 
@@ -43,6 +44,8 @@ def run_register_prediction(pdbs, level):
     print ('Predicting registers...')
     #Todo add options to test all levels, or select one
     find_best_combination(test_file_path,score_output_file, level )
+    time.sleep(0.1)
+
 
     print 'Optimizing local register for better global shear...'
     outfile = "shear_adjustments"

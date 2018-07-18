@@ -27,8 +27,6 @@ parser.add_argument("-l","--level", metavar= "L", type = int, default=None, help
 
 
 
-
-
 if __name__ ==  "__main__":
     args =parser.parse_args()
     fasta_file = args.fastafile
@@ -55,6 +53,8 @@ if __name__ ==  "__main__":
         for l in levels:
             print ("Predicting structure for level {}".format(l))
             run_register_prediction([pdb], l)
+            time.sleep(0.5)
+
             generate_barrel_structure([pdb], l)
             time.sleep(1.)
 

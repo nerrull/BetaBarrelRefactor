@@ -2,6 +2,7 @@
 import os
 from os.path import join, exists
 from os import mkdir
+import time
 from shutil import rmtree, copy
 from construct_ca_pdb import construct_ca
 from construct_bb_pdb import construct_bb
@@ -43,15 +44,19 @@ def generate_barrel_structure(pdbs,level):
 
     print 'constructing Ca atoms...'
     construct_ca(pdbs)
+    time.sleep(0.1)
 
     print 'constructing backbone atoms from Ca atoms using BBQ algorithm...'
     construct_bb(pdbs)
+    time.sleep(0.1)
 
     print 'constructing sidechains using Scwrl4...'
     construct_sc(pdbs)
+    time.sleep(0.1)
 
     print 'cleaning tmp info to generate final structures...'
     correct_and_trim(pdbs)
+    time.sleep(0.1)
 
     copy_outputs(pdbs, level)
 
