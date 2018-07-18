@@ -1,37 +1,74 @@
-# H1 3DBMPP refactor
+# 3D-BMPP refactor
 
-This is a refactor of the  3D Beta-barrel Membrane Protein Predictor code  by Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad
-The source code is available at : http://sts.bioe.uic.edu/3dbmpp/
+This is a refactor of the  3D Beta-barrel Membrane Protein Predictor code by Will Tian. 
+The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
 
-
-# H3 Full Citation
-<cite>
+### Full Citation
+`
 @article {Tian201716817,
 	author = {Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad},
 	title = {High-resolution structure prediction of β-barrel membrane proteins},
 	year = {2018},
 	doi = {10.1073/pnas.1716817115},
 	publisher = {National Academy of Sciences},
-	abstract = {β-Barrel membrane proteins (βMPs) are drawing increasing attention because of their promising potential in bionanotechnology. However, their structures are notoriously hard to determine experimentally. Here we develop a method to achieve accurate prediction of βMP structures, including those for which no prediction has been attempted before. The method is general and can be applied to genome-wide structural prediction of βMPs, which will enable research into bionanotechnology and drugability of βMPs.β-Barrel membrane proteins (βMPs) play important roles, but knowledge of their structures is limited. We have developed a method to predict their 3D structures. We predict strand registers and construct transmembrane (TM) domains of βMPs accurately, including proteins for which no prediction has been attempted before. Our method also accurately predicts structures from protein families with a limited number of sequences and proteins with novel folds. An average main-chain rmsd of 3.48 {\r A} is achieved between predicted and experimentally resolved structures of TM domains, which is a significant improvement (\&gt;3 {\r A}) over a recent study. For βMPs with NMR structures, the deviation between predictions and experimentally solved structures is similar to the difference among the NMR structures, indicating excellent prediction accuracy. Moreover, we can now accurately model the extended β-barrels and loops in non-TM domains, increasing the overall coverage of structure prediction by \&gt;30\%. Our method is general and can be applied to genome-wide structural prediction of βMPs.},
 	issn = {0027-8424},
 	URL = {http://www.pnas.org/content/early/2018/01/25/1716817115},
 	eprint = {http://www.pnas.org/content/early/2018/01/25/1716817115.full.pdf},
 	journal = {Proceedings of the National Academy of Sciences}
 }
-</cite>
-#H2 Requirements
-Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). To download scwr, you must apply for a license on their website.
+`
 
-To install python requirements,
+##Requirements
+Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). To download scwrl, you must apply for a license on their website. 
+We then recommend unpacking it into a folder name `scwrl`in the top level folder of this repo. You can also change the path in `defs.py`
 
-#H2 Usage
+Python requirements `numpy, pandas, biopython`
+To install required python packages: `pip install -r requirements.txt`
 
-To predict beta-barrel structure, you must provide a fasta file with the protein sequence as well as the identified transmembrane strands. (See the example_fasta.txt file for reference).
+##Compiling
+Part of the application is written in C and needs to be compiled.
+
+`
+cd bb_register/pred_combine
+make
+`
+
+If you're getting an error that says something like "Can't find file coonstruction_inputs/resuls/regs/*.regs" you probably forgot to do this step 
+
+
+## Usage
+
+To predict beta-barrel structure, you must provide a fasta file with the protein sequence as well as the identified transmembrane strands. 
+See the example_fasta.txt file for reference.
+You can also provide a fasta file with multiple sequences and they will be processed individually.
 
 We recommend using [PRED-TMBB2](https://bio.tools/PRED-TMBB2) to predict the transmembrane strands.
 
-Than call:
+###Running the code 
+From a shell call:
+
 `python main.py -f [fastfile]`
-to predict the beta barrel structure.  the new pdb files can be found in `/output`
+
+to predict the beta barrel structure.  The newly created pdb files can be found in `output/` and can be inspected using [PyMOL](https://pymol.org/2/). 
+
+Other parameters:
+`--level` or `-l`  \[1-5\] or -1 : This changes the set of parameters used during register prediction.
+
+A detailed description of these parameters can be found on page 2 of the appendix in `docs/`.
+If the parameter is set to -1, a predicted structure is generated for each level. The level of parameters used is identified in output files by a `l0#` suffix.
+
+When the parameter is not defined, we infer the level based on the number of transmembrane strands (N) in the provided input file. 
+* For N<16, barrels are predicted using both levels 1 and 2
+* For 16 <= N < 20, barrels are predicted using levels 3 and 4
+
+Quick reference :
+
+* 1 : Small BMPs (N < 16) without inplugs or outclamps\n
+* 2 : Small BMPs (N < 16) with inplugs or outclamps\n
+* 3 : Medium oligomeric BMPs (16 <= N < 20)\n
+* 4 : Medium monomeric BMPs (16 <= N < 20)\n
+* 5 : Large BMPs (N >= 20)
+
+
 
 
