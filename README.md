@@ -4,28 +4,28 @@ This is a refactor of the  3D Beta-barrel Membrane Protein Predictor code by Wil
 The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
 
 ### Full Citation
-`
-@article {Tian201716817,
-	author = {Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad},
-	title = {High-resolution structure prediction of β-barrel membrane proteins},
-	year = {2018},
-	doi = {10.1073/pnas.1716817115},
-	publisher = {National Academy of Sciences},
-	issn = {0027-8424},
-	URL = {http://www.pnas.org/content/early/2018/01/25/1716817115},
-	eprint = {http://www.pnas.org/content/early/2018/01/25/1716817115.full.pdf},
-	journal = {Proceedings of the National Academy of Sciences}
-}
-`
+::
+    @article {Tian201716817,
+        author = {Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad},
+        title = {High-resolution structure prediction of β-barrel membrane proteins},
+        year = {2018},
+        doi = {10.1073/pnas.1716817115},
+        publisher = {National Academy of Sciences},
+        issn = {0027-8424},
+        URL = {http://www.pnas.org/content/early/2018/01/25/1716817115},
+        eprint = {http://www.pnas.org/content/early/2018/01/25/1716817115.full.pdf},
+        journal = {Proceedings of the National Academy of Sciences}
+    }
 
-##Requirements
+
+## Requirements
 Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). To download scwrl, you must apply for a license on their website. 
 We then recommend unpacking it into a folder name `scwrl`in the top level folder of this repo. You can also change the path in `defs.py`
 
 Python requirements `numpy, pandas, biopython`
 To install required python packages: `pip install -r requirements.txt`
 
-##Compiling
+## Compiling
 Part of the application is written in C and needs to be compiled.
 
 `
@@ -44,7 +44,8 @@ You can also provide a fasta file with multiple sequences and they will be proce
 
 We recommend using [PRED-TMBB2](https://bio.tools/PRED-TMBB2) to predict the transmembrane strands.
 
-###Running the code 
+### Running the code 
+
 From a shell call:
 
 `python main.py -f [fastfile]`
