@@ -23,7 +23,7 @@ Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). To dow
 We then recommend unpacking it into a folder name `scwrl`in the top level folder of this repo. You can also change the path in `defs.py`.
 
 Python requirements `numpy, pandas, biopython`
-
+z
 To install required python packages: `pip install -r requirements.txt`
 
 ## Compiling

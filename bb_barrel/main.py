@@ -21,8 +21,13 @@ def clean():
 def copy_outputs(pdbs, level):
     for pdb in pdbs:
         pdb_path = join(SC_DIR, pdb + ".pdb")
+        pdb_path_2 = join(SC_DIR, pdb+ "_reidx_ext.pdb")
+
         out_path = join(OUTPUT_DIR, pdb+"_l0{}.pdb".format(level))
+        out_path_2 = join(OUTPUT_DIR, pdb+"_ext_l0{}.pdb".format(level))
+
         copy(pdb_path, out_path)
+        copy(pdb_path_2, out_path_2)
 
 def makedirs():
     dirs = [CONSTRUCTION_DIR,RESULTS_DIR, OUTPUT_DIR, BARREL_OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR]
