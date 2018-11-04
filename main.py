@@ -25,8 +25,6 @@ parser.add_argument("-f","--fastafile", metavar= "F", type = str, help="Path to 
 parser.add_argument("-l","--level", metavar= "L", type = int, default=None, help="The level to run the prediction at (default auto-detects the appropriate level): -1 to run all levels. \n" + lvls)
 
 
-
-
 if __name__ ==  "__main__":
     args =parser.parse_args()
     fasta_file = args.fastafile
@@ -35,13 +33,11 @@ if __name__ ==  "__main__":
 
     pdbs = prepare_input(fasta_file)
 
-
     if not check_input_files(pdbs):
         exit(0)
 
     print ("Running ")
     level = args.level
-
 
     for pdb in pdbs:
         levels = [level]

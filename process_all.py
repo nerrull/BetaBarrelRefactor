@@ -132,7 +132,7 @@ def fisher_yates(seq):
     return seq
 
 
-def prepare_input(fasta_file):
+def prepare_input(fasta_file, scramble = False):
     sequenceDict= get_sequences(fasta_file)
 
     for sequence_name, (seq, tm) in sequenceDict.iteritems():
@@ -143,19 +143,24 @@ def prepare_input(fasta_file):
         convert_string(seq, "{0}/{1}.res".format(out_dir, sequence_name))
 
         #Generate scrambled control sequence
-        out_dir = join(INPUT_DIR, sequence_name+"_scrambled")
-        if not exists(out_dir):
-            mkdir(out_dir)
-        write_regs(seq, tm, "{0}/{1}_scrambled".format(out_dir, sequence_name))
-        scramble = fisher_yates(seq)
-        convert_string(scramble, "{0}/{1}_scrambled.res".format(out_dir, sequence_name))
+        if scramble:
+            out_dir = join(INPUT_DIR, sequence_name+"_scrambled")
+            if not exists(out_dir):
+                mkdir(out_dir)
+            write_regs(seq, tm, "{0}/{1}_scrambled".format(out_dir, sequence_name))
+            scramble = fisher_yates(seq)
+            convert_string(scramble, "{0}/{1}_scrambled.res".format(out_dir, sequence_name))
 
-        with open("{0}/{1}_scrambled.seq".format(out_dir, sequence_name), "w") as f:
-            f.write(scramble)
-            f.write("\n")
+            with open("{0}/{1}_scrambled.seq".format(out_dir, sequence_name), "w") as f:
+                f.write(scramble)
+                f.write("\n")
 
-    scrambled_pdbs = [pdb +"_scrambled" for pdb in sequenceDict.keys()]
-    return sequenceDict.keys() + scrambled_pdbs
+    returnKeys =sequenceDict.keys()
+    if scramble:
+        scrambled_pdbs = [pdb +"_scrambled" for pdb in sequenceDict.keys()]
+        returnKeys = sequenceDict.keys() + scrambled_pdbs
+
+    return returnKeys
 
 
 if __name__=="__main__":
