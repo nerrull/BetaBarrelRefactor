@@ -19,7 +19,7 @@ The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
 ```
 
 ## Requirements
-###SCRWL
+### SCRWL
 Sidechain prediction relies on [SCWRL](http://dunbrack.fccc.edu/scwrl4/). 
 To download scwrl, you must apply for a license on their website. 
 We then recommend unpacking it into a folder name `scwrl`in the top level folder of this repo. 
@@ -27,7 +27,7 @@ You can also change the path to an absolute path on line 38 of `defs.py`.
 
 You also need to chage line 3 in `scrwl/Scwrl4.ini` to `FilePath = [absolute path to scwrl]/bbDepRotLib.bin`
 
-###Python
+### Python
 Python requirements: `numpy, pandas, biopython`
 
 `pip install -r requirements.txt` to install required python packages.
@@ -96,7 +96,7 @@ Quick reference :
 * 5 : Large BMPs (N >= 20)
 
 
-###Example fasta file
+### Example fasta file
 ```
 >tr|A9WGN5|A9WGN5_CHLAA
 MTMINRSRLTIFALLLTGILGSIIAIWSWSANAQTASLTVSPTVARQNTTVTLYGSGFVP
@@ -114,9 +114,9 @@ MOOOOOOOOOOOOMMMMMMMIIMMMMMMMMMOOOOOOMMMMMMMMMIIMMMMMMMMOOOO
 OOOOOOOOOOOOOOOOOMMMMMMMMMMM
 ```
 
-The two lines demarcated by `>tr|[]|[]` indicate the short protein name and its full name. 
-Then follows a line containing the amino acid sequence. A second identifier is followed by the 
-transmembrane strand prediction, where each amino acid is identified as being either 
+The two lines starting with `>tr|[short]|[full]` indicate a shortened version of the protein name and its full name. 
+The first is followed by a line containing the amino acid sequence. The second identifying line is followed by the 
+transmembrane strand prediction, where each amino acid is predicted as being either 
 inner (`I`), outer (`O`), or transmembrane(`M`). 
 
 
