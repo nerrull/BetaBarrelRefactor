@@ -6,6 +6,7 @@ defs_file_path = os.path.realpath(__file__)
 BASE_DIR =dirname(defs_file_path)
 INPUT_DIR = join(BASE_DIR, "inputs")
 OUTPUT_DIR = join(BASE_DIR, "output")
+MODELLER_BASE_PATH = join(join(BASE_DIR, "loop_modeller"), "inputs")
 
 # Paths for register predition
 REGISTER_DIR  = join(BASE_DIR, "bb_register")
@@ -27,6 +28,7 @@ SC_DIR = join(BARREL_OUTPUT_DIR, "sc")
 TMPPDB_DIR = join(BARREL_OUTPUT_DIR, "tmppdbs")
 REINDEX_DIR = join(BARREL_OUTPUT_DIR, "reindexmap")
 BBQ_DIR  = join(BARREL_DIR, *["scripts", "BBQ"])
+BARREL_OUTPUT_PDB_DIR = join(BARREL_OUTPUT_DIR, "pdb")
 
 
 l01 = ['1bxw', '1qj8', '1p4t', '2f1t', '1thq', '2erv', '2lhf', '2mlh', '3dzm', '1qd6', '2f1c', '1k24', '1i78', '2wjr', '4pr7', 'unkn']

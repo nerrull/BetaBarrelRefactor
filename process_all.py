@@ -142,6 +142,10 @@ def prepare_input(fasta_file, scramble = False):
         write_regs(seq, tm, "{0}/{1}".format(out_dir, sequence_name))
         convert_string(seq, "{0}/{1}.res".format(out_dir, sequence_name))
 
+        with open("{0}/{1}.seq".format(out_dir, sequence_name), "w") as f:
+            f.write(seq)
+            f.write("\n")
+
         #Generate scrambled control sequence
         if scramble:
             out_dir = join(INPUT_DIR, sequence_name+"_scrambled")

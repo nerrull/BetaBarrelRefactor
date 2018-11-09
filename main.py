@@ -1,4 +1,4 @@
-from os.path import exists
+from os.path import exists, splitext,basename
 import argparse
 import time
 
@@ -6,7 +6,7 @@ from utils import loadSearchPaths, check_input_files, autodetectLevel
 from bb_register import run_register_prediction
 from bb_barrel import generate_barrel_structure
 from process_all import prepare_input
-
+from LoopModeller import prepModellerFiles
 
 lvls ='''
 1 : Small BMPs (N < 16) without inplugs or outclamps\n
@@ -31,7 +31,7 @@ if __name__ ==  "__main__":
     if not exists(fasta_file):
         print("Couldn't find the fasta file : \n{}".format(fasta_file))
 
-    pdbs = prepare_input(fasta_file)
+    pdbs = prepare_input(fasta_file, scramble=True)
 
     if not check_input_files(pdbs):
         exit(0)
@@ -39,6 +39,7 @@ if __name__ ==  "__main__":
     print ("Running ")
     level = args.level
 
+    modellerCommands = []
     for pdb in pdbs:
         levels = [level]
         if level == None:
@@ -51,6 +52,17 @@ if __name__ ==  "__main__":
             run_register_prediction([pdb], l)
             time.sleep(0.5)
 
-            generate_barrel_structure([pdb], l)
+            output_files = generate_barrel_structure([pdb], l)
             time.sleep(1.)
+            extended_pdb = output_files[1]
+
+            prepModellerFiles(pdb,extended_pdb)
+            pdb_name = splitext(basename(extended_pdb))[0]
+            modellerCommands.append("python ./LoopModeller.py -b {0} -l {1} -n 100".format(pdb_name, l) )
+
+    print("To add loops with MODELLER to all generated PDBS, run these commands")
+    for command in modellerCommands:
+        print(command)
+    print("To inpect PDBs look in /output")
+
 

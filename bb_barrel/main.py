@@ -8,7 +8,7 @@ from construct_ca_pdb import construct_ca
 from construct_bb_pdb import construct_bb
 from construct_sc_pdb import construct_sc
 from correct_index_and_trim import correct_and_trim
-from defs import CONSTRUCTION_DIR, BARREL_OUTPUT_DIR, OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR, RESULTS_DIR
+from defs import CONSTRUCTION_DIR, BARREL_OUTPUT_DIR, BARREL_OUTPUT_PDB_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR, RESULTS_DIR
 
 def clean():
     results_dir = join(CONSTRUCTION_DIR, 'results')
@@ -18,19 +18,21 @@ def clean():
         rmtree(dir)
         os.mkdir(dir)
 
-def copy_outputs(pdbs, level):
-    for pdb in pdbs:
-        pdb_path = join(SC_DIR, pdb + ".pdb")
-        pdb_path_2 = join(SC_DIR, pdb+ "_reidx_ext.pdb")
+def copy_outputs(pdb, level):
 
-        out_path = join(OUTPUT_DIR, pdb+"_l0{}.pdb".format(level))
-        out_path_2 = join(OUTPUT_DIR, pdb+"_ext_l0{}.pdb".format(level))
+    pdb_path = join(SC_DIR, pdb + ".pdb")
+    pdb_path_2 = join(SC_DIR, pdb+ "_reidx_ext.pdb")
 
-        copy(pdb_path, out_path)
-        copy(pdb_path_2, out_path_2)
+    out_path = join(BARREL_OUTPUT_PDB_DIR, pdb + "_l0{}.pdb".format(level))
+    out_path_2 = join(BARREL_OUTPUT_PDB_DIR, pdb + "_ext_l0{}.pdb".format(level))
+
+    copy(pdb_path, out_path)
+    copy(pdb_path_2, out_path_2)
+
+    return (out_path, out_path_2)
 
 def makedirs():
-    dirs = [CONSTRUCTION_DIR,RESULTS_DIR, OUTPUT_DIR, BARREL_OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR,TMPPDB_DIR, TMP_DIR]
+    dirs = [CONSTRUCTION_DIR, RESULTS_DIR, BARREL_OUTPUT_PDB_DIR, BARREL_OUTPUT_DIR, BASE_DIR, CA_DIR, SC_DIR, BB_DIR, REINDEX_DIR, TMPPDB_DIR, TMP_DIR]
     for dir in dirs:
         if not exists(dir):
             mkdir(dir)
@@ -63,7 +65,8 @@ def generate_barrel_structure(pdbs,level):
     correct_and_trim(pdbs)
     time.sleep(0.1)
 
-    copy_outputs(pdbs, level)
+    output_pdbs = copy_outputs(pdbs[0], level)
+    return output_pdbs
 
 
 if __name__ =="__main__":

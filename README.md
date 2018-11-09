@@ -119,3 +119,12 @@ Then follows a line containing the amino acid sequence. A second identifier is f
 transmembrane strand prediction, where each amino acid is identified as being either 
 inner (`I`), outer (`O`), or transmembrane(`M`). 
 
+
+### Adding loops with MODELLER
+After building the beta barrels, the program will print the command to run Modeller for adding the
+loops to the transmembrane strands already modelled. By default, 100 models are generated but this
+can be changed with the -n parameter. We recommend looking at the generated transmembrane strands if
+you have used more than one "level" parameter, and choosing the one that seems the most realistic beta-barrel
+for modelling the loops.
+`python ./LoopModeller.py -b A9WGN5_CHLAA_ext_l03 -l 3 -n 100`
+
