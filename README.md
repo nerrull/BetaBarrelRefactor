@@ -1,9 +1,17 @@
 # 3D-BMPP refactor
 
 This is a refactor of the  3D Beta-barrel Membrane Protein Predictor code by Wei Tian. 
+
 The original source code is available at : http://sts.bioe.uic.edu/3dbmpp/
 
-### Full Citation
+The author's pipeline can be found at : https://github.com/jksr/3dbmpp
+
+### Citation
+
+[High-resolution structure prediction of beta-barrel membrane proteins. W Tian, M Lin, K Tang, J Liang, H Naveed. Proceedings of the National Academy of Sciences 115 (7), 1511-1516](https://www.pnas.org/content/115/7/1511)
+
+Please cite the paper if you use 3DBMPP in your research.
+
 ```
     @article {Tian201716817,
         author = {Tian, Wei and Lin, Meishan and Tang, Ke and Liang, Jie and Naveed, Hammad},
